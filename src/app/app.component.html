@@ -1,0 +1,24 @@
+<md-toolbar color="primary">
+    <span>{{title}}</span>
+</md-toolbar>
+<div class="app-content">
+    <md-card *ngFor="let document of documents" class="app-card">
+        <md-card-header>
+            <md-card-title>{{document.title}}</md-card-title>
+            <md-card-subtitle>{{document.subtitle}}</md-card-subtitle>
+            <img md-card-avatar src="{{document.avatar}}">
+        </md-card-header>
+        <img *ngIf="document.mime.startsWith('image/')" md-card-image src="{{document.content}}">
+        <md-card-actions>
+            <button md-button (click)="copy(document)">
+                <md-icon>content_copy</md-icon>
+            </button>
+            <button md-button (click)="delete(document)">
+                <md-icon>delete</md-icon>
+            </button>
+        </md-card-actions>
+    </md-card>
+</div>
+<span class="app-action">
+  <button md-fab (click)="add()"><md-icon>add</md-icon></button>
+</span>
